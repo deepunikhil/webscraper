@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import pandas as pd
-from tqdm import tqdm
 
 # HTML class names.
 ITEM_CLASS = "_1AOd3 QIjwE" # article tag
@@ -9,6 +8,9 @@ ITEM_DESCRIPTION_CLASS = "YbtDD _18N5Q" # div tag
 ITEM_PRICE_CLASS = "_3wu-9" # span tag
 ITEM_COLOR_CLASS = "_2jA_i _3moH9" # div tag
 NEXTPAGE_BUTTON_CLASS = "_2WIqd" # a tag
+
+# First pages.
+WOMENS_SHOES = "https://shop.nordstrom.com/c/womens-shoes"
 
 # Chrome driver and pandas dataframe for data storage.
 driver = webdriver.Chrome()
@@ -29,8 +31,7 @@ def fetch_page(pageURL, dataframe):
     for article in soup.find_all("article", class_=ITEM_CLASS):
         try:
             item_name = article.h3.a.text
-            item_price = article.find("div", class_=ITEM_DESCRIPTION_CLASS) \
-                    .find("span", class_=ITEM_PRICE_CLASS).text
+            item_price = article.find("div", class_=ITEM_DESCRIPTION_CLASS).find("span", class_=ITEM_PRICE_CLASS).text
             item_color = []
             if article.find("div", class_=ITEM_COLOR_CLASS):
                 for color in article.find("div", class_=ITEM_COLOR_CLASS).div.ul.find_all("li"):
@@ -41,7 +42,7 @@ def fetch_page(pageURL, dataframe):
                                           "item_color": item_color,
                                           "item_link": item_link}, ignore_index=True)
         except:
-            print("fetch failed.")
+            None
     return dataframe, soup
 
 
@@ -55,21 +56,20 @@ def fetch_all(mainURL, dataframe):
     :return: manipulated dataframe
     '''
     curURL = mainURL
-    next_link = True
-    pbar = tqdm(total=1200)
-    while next_link:
+    while True:
+        tempURL = curURL
         dataframe, soup = fetch_page(curURL, dataframe)
-        next_link = soup.find("a", class_="_2WIqd")["href"]
-        curURL = "https://shop.nordstrom.com/c/all-women" + next_link
-        dataframe.to_csv("nordstrom.csv")
-        pbar.update(1)
-    pbar.close()
+        nav_links = soup.find_all("a", class_=NEXTPAGE_BUTTON_CLASS)
+        for link in nav_links:
+            if link.span.text == "Next":
+                curURL = mainURL + link["href"]
+                print("current URL: " + curURL)
+        if curURL == tempURL:
+            break
+    dataframe.to_csv("nordstrom.csv")
     return dataframe
 
     driver.quit()
 
-# Parent page for women's items.
-URL = "https://shop.nordstrom.com/c/all-women?breadcrumb=Home%2FWomen%2FAll%20Women" # first page URL
-
-# Execute for all women's wear on Nordstrom.
-fetch_all(URL, df_nordstrom)
+# Execute for all women's shoes on Nordstrom.
+fetch_all(WOMENS_SHOES, df_nordstrom)
