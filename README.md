@@ -30,4 +30,7 @@ As can be seen in the images above, I was able to observe several price discrepe
 
 However, other use scenarios and room for improvements do come to mind.
 1. The stores themselves could scrape price data from other retailers periodically and reflect the price discrepancies to prevent customer loss.
-2. Data on item color and size could be collected in case the type of item a customer is looking for is missing in the current store.
+2. An incoming retailer could collect price data from other major retailers to gain an advantage in the market.
+3. Data on item color and size could be collected in case the type of item a customer is looking for is missing in the current store.
+
+🔚🔚🔚
