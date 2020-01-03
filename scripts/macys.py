@@ -12,10 +12,26 @@ NEXTPAGE_BUTTON_CLASS = "next-page" #li tag
 
 # First pages.
 WOMENS_SHOES = "https://www.macys.com/shop/shoes/all-womens-shoes?id=56233"
+WOMENS_CLOTHING = "https://www.macys.com/shop/womens-clothing/all-womens-clothing?id=188851&cm_sp=us_hdr-_-women-_-188851_all-women%27s-clothing_COL1"
+MENS_SHOES = "https://www.macys.com/shop/mens-clothing/shop-all-mens-footwear?id=55822&edge=hybrid"
+MENS_CLOTHING = "https://www.macys.com/shop/mens-clothing/all-mens-clothing?id=197651&cm_sp=us_hdr-_-men-_-197651_all-men%27s-clothing_COL1"
+HANDBAGS = "https://www.macys.com/shop/handbags-accessories/all-handbags?id=27686&edge=hybrid"
 
 # Chrome driver and pandas dataframe for data storage.
 driver = webdriver.Chrome()
-df_macys = pd.DataFrame(columns=["item_brand", "item_name", "item_price", "item_link"])
+
+
+def fetch_url(CATEGORY):
+    if CATEGORY == "women's shoes":
+        return WOMENS_SHOES
+    elif CATEGORY == "women's clothing":
+        return WOMENS_CLOTHING
+    elif CATEGORY == "men's shoes":
+        return MENS_SHOES
+    elif CATEGORY == "men's clothing":
+        return MENS_CLOTHING
+    elif CATEGORY == "handbags":
+        return HANDBAGS
 
 
 def fetch_page(pageURL, dataframe):
@@ -78,6 +94,3 @@ def fetch_all(mainURL, dataframe):
     return dataframe
 
     driver.quit()
-
-# Execute for all women's shoes on Macy's.
-# fetch_all(WOMENS_SHOES, df_macys)

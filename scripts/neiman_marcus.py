@@ -12,10 +12,26 @@ NEXT_PAGE_CLASS = "arrow-button--right" # a tag, link in href attribute
 
 # First pages.
 WOMENS_SHOES = "https://www.neimanmarcus.com/c/shoes-all-designer-shoes-cat47190746?navpath=cat000000_cat000141_cat47190746&source=leftNav"
+WOMENS_CLOTHING = "https://www.neimanmarcus.com/c/womens-clothing-cat58290731?navpath=cat000000_cat000001_cat58290731"
+MENS_SHOES = "https://www.neimanmarcus.com/c/mens-shoes-cat000550?navpath=cat000000_cat000470_cat000550"
+MENS_CLOTHING = "https://www.neimanmarcus.com/c/mens-clothing-cat14120827?navpath=cat000000_cat000470_cat14120827"
+HANDBAGS = "https://www.neimanmarcus.com/c/handbags-all-handbags-cat46860739?navpath=cat000000_cat13030735_cat46860739"
 
 # Chrome driver and pandas dataframe for data storage.
 driver = webdriver.Chrome()
-df_neiman = pd.DataFrame(columns=["item_brand", "item_name", "item_price", "item_link"])
+
+
+def fetch_url(CATEGORY):
+    if CATEGORY == "women's shoes":
+        return WOMENS_SHOES
+    elif CATEGORY == "women's clothing":
+        return WOMENS_CLOTHING
+    elif CATEGORY == "men's shoes":
+        return MENS_SHOES
+    elif CATEGORY == "men's clothing":
+        return MENS_CLOTHING
+    elif CATEGORY == "handbags":
+        return HANDBAGS
 
 
 def fetch_page(pageURL, dataframe):
@@ -77,6 +93,3 @@ def fetch_all(mainURL, dataframe):
     return dataframe
 
     driver.quit()
-
-# Execute for all women's shoes on Neiman Marcus.
-# fetch_all(WOMENS_SHOES, df_neiman)

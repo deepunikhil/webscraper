@@ -11,10 +11,26 @@ NEXTPAGE_BUTTON_CLASS = "_2WIqd" # a tag
 
 # First pages.
 WOMENS_SHOES = "https://shop.nordstrom.com/c/womens-shoes"
+WOMENS_CLOTHING = "https://shop.nordstrom.com/c/womens-clothing?origin=topnav&breadcrumb=Home%2fWomen%2fClothing"
+MENS_SHOES = "https://shop.nordstrom.com/c/mens-shoes?origin=topnav&breadcrumb=Home%2fMen%2fShoes"
+MENS_CLOTHING = "https://shop.nordstrom.com/c/mens-clothing?origin=topnav&breadcrumb=Home%2fMen%2fClothing"
+HANDBAGS = "https://shop.nordstrom.com/c/womens-handbags-and-wallets?origin=topnav&breadcrumb=Home%2fWomen%2fHandbags"
 
 # Chrome driver and pandas dataframe for data storage.
 driver = webdriver.Chrome()
-df_nordstrom = pd.DataFrame(columns=["item_name", "item_price", "item_link"])
+
+
+def fetch_url(CATEGORY):
+    if CATEGORY == "women's shoes":
+        return WOMENS_SHOES
+    elif CATEGORY == "women's clothing":
+        return WOMENS_CLOTHING
+    elif CATEGORY == "men's shoes":
+        return MENS_SHOES
+    elif CATEGORY == "men's clothing":
+        return MENS_CLOTHING
+    elif CATEGORY == "handbags":
+        return HANDBAGS
 
 
 def fetch_page(pageURL, dataframe):
@@ -69,6 +85,3 @@ def fetch_all(mainURL, dataframe):
     return dataframe
 
     driver.quit()
-
-# Execute for all women's shoes on Nordstrom.
-# fetch_all(WOMENS_SHOES, df_nordstrom)
