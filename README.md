@@ -33,4 +33,4 @@ However, other use scenarios and room for improvements do come to mind.
 2. An incoming retailer could collect price data from other major retailers to gain an advantage in the market.
 3. Data on item color and size could be collected in case the type of item a customer is looking for is missing in the current store.
 
-🔚
+🔚🔚🔚🔚🔚
