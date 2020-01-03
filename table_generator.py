@@ -1,7 +1,7 @@
 import pandas as pd
 from scripts import macys as mc, neiman_marcus as nm, nordstrom as ns
 
-
+# Compares price for given category. Generate output.csv.
 def compare_price(CATEGORY):
     '''
     Generate output.csv file comparing item price for the given category
@@ -10,6 +10,7 @@ def compare_price(CATEGORY):
     '''
     generate_data(CATEGORY)
     generate_joined_output()
+    return
 
 
 def generate_data(CATEGORY):
