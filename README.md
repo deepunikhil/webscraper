@@ -19,7 +19,9 @@ Calling `fetch_page` for each file generates a corresponding .csv file in the da
 
 ## 📋 Table Generator
 
-`table_generator.py` has a `compare_price` method that takes in one of the five item categories listed above and generates `output.csv` in the root directory containing a list of all overlapping items with their prices and store links (note that the item names will have been processed for ease of comparison). The current version lists all items in the women's shoes category as of January 2nd, 2020.
+`table_generator.py` has a `compare_price` method that takes in one of the five item categories listed above and generates `output.csv` in the root directory containing a list of all overlapping items with their prices and store links (note that the item names will have been processed for ease of comparison). 
+
+The current version lists all items in the women's shoes category as of January 2nd, 2020.
 
 ## 👠 Results, Improvements and Other Use Scenarios
 
