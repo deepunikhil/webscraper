@@ -4,7 +4,7 @@ Project was motivated by a student project at [Forkaia incubator](https://www.fo
 
 ## 🕸️ Webscraping
 
-Python `beatifulsoup4` and `selenium` packages were used for processing HTML files and automatic browsing. Within the `scripts` folder are Python scripts used for the webscraping process. The scripts share three methods: `fetch_url`, `fetch_page`, and `fetch_all`.
+[Beatiful Soup HTML parser](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) and [Selenium webdriver](https://selenium.dev/) were used alongside Python for webscraping process. Within the `scripts` folder are the actual Python scripts. The scripts share three methods: `fetch_url`, `fetch_page`, and `fetch_all`.
 
 1. The `fetch_url` method returns the http address of an item category's first shopping page. The only parameter is the item category represented by pre-defined strings.
 2. The `fetch_page` takes in the http address of a single shopping page and a dataframe. The method fills the dataframe with information of listed items such as item name, price and link.
