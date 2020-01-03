@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c00f7d48-7e70-45ac-a7c6-4aa610eccdbb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/neiman_marcus.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/table_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/macys.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/macys.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/nordstrom.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/nordstrom.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/macys.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/macys.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/nordstrom.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/nordstrom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/table_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +31,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.nordstrom (1)">
+  <component name="RunManager" selected="Python.table_generator">
     <configuration name="macys (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="webscraper" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,7 +116,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="nordstrom" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="table_generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="webscraper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -133,7 +128,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nordstrom.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/table_generator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.table_generator" />
         <item itemvalue="Python.nordstrom (1)" />
         <item itemvalue="Python.macys (1)" />
         <item itemvalue="Python.neiman_marcus" />
         <item itemvalue="Python.macys" />
-        <item itemvalue="Python.nordstrom" />
       </list>
     </recent_temporary>
   </component>
@@ -178,25 +173,25 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1900" height="204" key="GridCell.Tab.0.bottom" timestamp="1578009326306">
+    <state width="1899" height="204" key="GridCell.Tab.0.bottom" timestamp="1578013276862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1900" height="204" key="GridCell.Tab.0.bottom/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578009326306" />
+    <state width="1899" height="204" key="GridCell.Tab.0.bottom/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578013276862" />
     <state width="1480" height="283" key="GridCell.Tab.0.bottom/0.0.1500.1000@0.0.1500.1000" timestamp="1577950501660" />
-    <state width="1900" height="204" key="GridCell.Tab.0.center" timestamp="1578009326305">
+    <state width="1899" height="204" key="GridCell.Tab.0.center" timestamp="1578013276861">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1900" height="204" key="GridCell.Tab.0.center/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578009326305" />
+    <state width="1899" height="204" key="GridCell.Tab.0.center/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578013276861" />
     <state width="1480" height="283" key="GridCell.Tab.0.center/0.0.1500.1000@0.0.1500.1000" timestamp="1577950501659" />
-    <state width="1900" height="204" key="GridCell.Tab.0.left" timestamp="1578009326305">
+    <state width="1899" height="204" key="GridCell.Tab.0.left" timestamp="1578013276861">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1900" height="204" key="GridCell.Tab.0.left/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578009326305" />
+    <state width="1899" height="204" key="GridCell.Tab.0.left/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578013276861" />
     <state width="1480" height="283" key="GridCell.Tab.0.left/0.0.1500.1000@0.0.1500.1000" timestamp="1577950501658" />
-    <state width="1900" height="204" key="GridCell.Tab.0.right" timestamp="1578009326305">
+    <state width="1899" height="204" key="GridCell.Tab.0.right" timestamp="1578013276862">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1900" height="204" key="GridCell.Tab.0.right/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578009326305" />
+    <state width="1899" height="204" key="GridCell.Tab.0.right/-3000.0.1500.1000/0.0.1920.1080@0.0.1920.1080" timestamp="1578013276862" />
     <state width="1480" height="283" key="GridCell.Tab.0.right/0.0.1500.1000@0.0.1500.1000" timestamp="1577950501659" />
   </component>
 </project>
