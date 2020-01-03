@@ -3,19 +3,19 @@ from selenium import webdriver
 import pandas as pd
 
 # HTML class names.
-ITEM_CLASS = "cell productThumbnailItem" # li tag
-ITEM_NAME_CLASS = "productDescLink" # a tag
-ITEM_BRAND_CLASS = "productBrand" # div tag
-PRICE_CLASS = "regular" # span tag
-DISCOUNT_PRICE_CLASS = "discount" # span tag
-NEXTPAGE_BUTTON_CLASS = "next-page" #li tag
+PRODUCT_CLASS = "product-thumbnail grid-33 tablet-grid-33 mobile-grid-50 grid-1600" #div tag
+PRODUCT_LINK_CLASS = "product-thumbnail__link" # a tag, append neimanmarcus.com to front
+PRODUCT_NAME_CLASS = "name" # span tag
+PRODUCT_PRICE_CLASS = "product-thumbnail__sale-price" # div tag
+PRODUCT_BRAND_CLASS = "designer" # span tag
+NEXT_PAGE_CLASS = "arrow-button--right" # a tag, link in href attribute
 
 # First pages.
-WOMENS_SHOES = "https://www.macys.com/shop/shoes/all-womens-shoes?id=56233"
+WOMENS_SHOES = "https://www.neimanmarcus.com/c/shoes-all-designer-shoes-cat47190746?navpath=cat000000_cat000141_cat47190746&source=leftNav"
 
 # Chrome driver and pandas dataframe for data storage.
 driver = webdriver.Chrome()
-df_macys = pd.DataFrame(columns=["item_brand", "item_name", "item_price", "item_link"])
+df_neiman = pd.DataFrame(columns=["item_brand", "item_name", "item_price", "item_link"])
 
 
 def fetch_page(pageURL, dataframe):
@@ -30,21 +30,20 @@ def fetch_page(pageURL, dataframe):
     driver.get(pageURL)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-    for article in soup.find_all("li", class_=ITEM_CLASS):
+    for article in soup.find_all("div", class_=PRODUCT_CLASS):
         try:
-            item_brand = article.find("div", class_=ITEM_BRAND_CLASS).text.lstrip().rstrip()
+            item_brand = article.find("span", class_=PRODUCT_BRAND_CLASS).text
             print(item_brand)
-            item_name = article.find("a", class_=ITEM_NAME_CLASS)["title"][1:]
+            item_name = article.find("span", class_=PRODUCT_NAME_CLASS).text
             print(item_name)
-            item_price = None
-            if article.find("span", PRICE_CLASS):
-                item_price = article.find("span", PRICE_CLASS).text
-            if article.find("span", DISCOUNT_PRICE_CLASS):
-                item_price = article.find("span", DISCOUNT_PRICE_CLASS).text
-            item_price = item_price.\
-                    replace(" ", "").replace("\t", "").replace("\n", "").replace("Sale", "").replace("Now", "")
+            price_tag = article.find("div", PRODUCT_PRICE_CLASS)
+            if price_tag.find("span", class_="price"):
+                for price in price_tag.find_all("span", class_="price"):
+                    item_price = price.text
+            else:
+                item_price = price_tag.span.text
             print(item_price)
-            item_link = "https://www.macys.com" + article.find("a", class_=ITEM_NAME_CLASS)["href"]
+            item_link = "https://www.neimanmarcus.com" + article.find("a", class_=PRODUCT_LINK_CLASS)["href"]
             print(item_link)
             dataframe = dataframe.append({"item_brand": item_brand,
                                           "item_name": item_name,
@@ -68,16 +67,16 @@ def fetch_all(mainURL, dataframe):
     while True:
         tempURL = curURL
         dataframe, soup = fetch_page(curURL, dataframe)
-        if soup.find("li", class_=NEXTPAGE_BUTTON_CLASS):
-            link = soup.find("li", class_=NEXTPAGE_BUTTON_CLASS)
-            curURL = "https://www.macys.com" + link.div.a["href"]
+        if soup.find("a", class_=NEXT_PAGE_CLASS):
+            link = soup.find("a", class_=NEXT_PAGE_CLASS)
+            curURL = "https://www.neimanmarcus.com" + link["href"]
             print("current URL: " + curURL)
         if curURL == tempURL:
             break
-    dataframe.to_csv("../data/macys.csv")
+    dataframe.to_csv("../data/neiman_marcus.csv")
     return dataframe
 
     driver.quit()
 
-# Execute for all women's shoes on Macy's.
-# fetch_all(WOMENS_SHOES, df_macys)
+# Execute for all women's shoes on Neiman Marcus.
+# fetch_all(WOMENS_SHOES, df_neiman)
