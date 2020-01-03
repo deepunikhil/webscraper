@@ -15,13 +15,19 @@ Project was motivated by a student project at [Forkaia incubator](https://www.fo
 2. The `fetch_page` takes in the http address of a single shopping page and a dataframe. The method fills the dataframe with information of listed items such as item name, price and link.
 3. The `fetch_all` methods also takes in the https address of a shopping page and a dataframe. The method automatically moves on to next page and calls `fetch_page` method until it reaches the very end.
 
-Calling `fetch_page` for each file generates a corresponding .csv file in the data folder which contains all scraped data. The actual logic behind the three methods are, as one would expect, similar. The only reason they have been separated out into different scripts are the differing HTML file structures and class names. Adding onto the list of online stores would only be a matter of taking the time to deconstruct the HTML structure of the new online store and incorporating the information to the existing methods.
+Calling `fetch_page` for each file generates a corresponding .csv file in the data folder which contains all scraped data.
 
 ## 📋 Table Generator
 
 `table_generator.py` has a `compare_price` method that takes in one of the five item categories listed above and generates `output.csv` in the root directory containing a list of all overlapping items with their prices and store links (note that the item names will have been processed for ease of comparison). The current version lists all items in the women's shoes category as of January 2nd, 2020.
 
-## 👠 Results
+## 👠 Results, Improvements and Other Use Scenarios
 
 ![macys](Capture.JPG)
 ![nordstrom](Capture2.JPG)
+
+As can be seen in the images above, I was able to observe several price discrepencies in between major online stores. However, the scraping process does appear to be overly intensive for its purpose since the algorithm essentially recreates entire database tables. I have come to conclude that a more efficient price comparing algorithm would simply look up prices from other stores in real time as a shopper browses through store pages much like [honey](https://www.joinhoney.com/).
+
+However, other use scenarios and room for improvements do come to mind.
+1. The stores themselves could scrape price data from other retailers periodically and reflect the price discrepancies to prevent customer loss.
+2. Data on item color and size could be collected in case the type of item a customer is looking for is missing in the current store.
